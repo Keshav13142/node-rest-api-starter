@@ -1,3 +1,4 @@
+import { config } from "@/config";
 import AppError from "./custom-error";
 
 export interface ValidationErrorItem {
@@ -14,6 +15,6 @@ export class RequestValidationError extends AppError {
       message: "Validation Error",
       statusCode: 400,
     });
-    this.errors = errors;
+    this.errors = config.isDev ? errors : [];
   }
 }
